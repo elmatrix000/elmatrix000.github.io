@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatrixVogue Cloud | Advanced Cybersecurity Operations</title>
+    <meta name="description" content="ELMATRIX000 Cybersecurity Portfolio - Threat Intelligence, Penetration Testing & Security Monitoring">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>">
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="MatrixVogue Cloud - Cybersecurity Operations">
+    <meta property="og:description" content="Advanced threat intelligence and security monitoring platform">
+    <meta property="og:image" content="https://elmatrix000.github.io/og-image.png">
+    <meta property="og:url" content="https://elmatrix000.github.io">
+</head>
+<body>
+    <!-- Matrix Code Rain Background -->
+    <canvas id="matrixCanvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="cyber-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo-glitch" data-text="MATRIX">MATRIX</span>
+                <span class="logo-vogue">VOGUE</span>
+                <sup class="logo-cloud">CLOUD</sup>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#dashboard" class="nav-link active"><i class="fas fa-tachometer-alt-fast"></i> DASHBOARD</a></li>
+                <li><a href="#threat-intel" class="nav-link"><i class="fas fa-radar"></i> THREAT INTEL</a></li>
+                <li><a href="#tools" class="nav-link"><i class="fas fa-tools"></i> TOOLKIT</a></li>
+                <li><a href="#pentest" class="nav-link"><i class="fas fa-crosshairs"></i> PENTEST</a></li>
+                <li><a href="#defense" class="nav-link"><i class="fas fa-shield-alt"></i> DEFENSE</a></li>
+                <li><a href="#projects" class="nav-link"><i class="fas fa-code-branch"></i> PROJECTS</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-terminal"></i> CONTACT</a></li>
+            </ul>
+            <div class="nav-status">
+                <span class="status-indicator active"></span>
+                <span class="status-text">SYSTEM: ONLINE</span>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Terminal Container -->
+    <main class="terminal-container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="terminal-section active">
+            <div class="terminal-header">
+                <div class="terminal-title">
+                    <i class="fas fa-tachometer-alt-fast"></i>
+                    <h1>MATRIXVOGUE SECURITY OPERATIONS CENTER</h1>
+                </div>
+                <div class="terminal-controls">
+                    <span class="time-display" id="liveTime">--:--:-- UTC</span>
+                    <button class="btn-refresh" onclick="refreshDashboard()">
+                        <i class="fas fa-sync-alt"></i> REFRESH
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card critical">
+                    <div class="stat-icon"><i class="fas fa-skull-crossbones"></i></div>
+                    <div class="stat-content">
+                        <h3>ACTIVE THREATS</h3>
+                        <div class="stat-value" id="activeThreats">187</div>
+                        <div class="stat-trend up">+12%</div>
+                    </div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="stat-content">
+                        <h3>CVE ALERTS</h3>
+                        <div class="stat-value" id="cveAlerts">43</div>
+                        <div class="stat-trend up">+5 NEW</div>
+                    </div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-icon"><i class="fas fa-shield-check"></i></div>
+                    <div class="stat-content">
+                        <h3>SYSTEMS SECURE</h3>
+                        <div class="stat-value" id="secureSystems">98%</div>
+                        <div class="stat-trend stable">±0.2%</div>
+                    </div>
+                </div>
+                <div class="stat-card info">
+                    <div class="stat-icon"><i class="fas fa-network-wired"></i></div>
+                    <div class="stat-content">
+                        <h3>NETWORK HEALTH</h3>
+                        <div class="stat-value" id="networkHealth">96.7%</div>
+                        <div class="stat-trend down">-0.3%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Monitoring -->
+            <div class="monitoring-grid">
+                <!-- Live Log Feed -->
+                <div class="monitor-card full-width">
+                    <div class="monitor-header">
+                        <h3><i class="fas fa-stream"></i> LIVE SECURITY LOG</h3>
+                        <div class="log-controls">
+                            <button class="btn-log" onclick="clearLogs()"><i class="fas fa-trash"></i></button>
+                            <button class="btn-log" onclick="pauseLogs()"><i class="fas fa-pause"></i></button>
+                            <button class="btn-log" onclick="exportLogs()"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                    <div class="log-container" id="securityLog">
+                        <div class="log-entry info">
+                            <span class="log-time">[12:45:23]</span>
+                            <span class="log-message">System initialized. All modules operational.</span>
+                        </div>
+                        <div class="log-entry warning">
+                            <span class="log-time">[12:46:01]</span>
+                            <span class="log-message">Suspicious activity detected from IP: 192.168.1.105</span>
+                        </div>
+                        <div class="log-entry success">
+                            <span class="log-time">[12:46:30]</span>
+                            <span class="log-message">Firewall rule applied. Threat mitigated.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Threat Map -->
+                <div class="monitor-card">
+                    <div class="monitor-header">
+                        <h3><i class="fas fa-globe-americas"></i> GLOBAL THREAT MAP</h3>
+                    </div>
+                    <div class="threat-map" id="threatMap">
+                        <!-- Animated threat dots will be generated here -->
+                    </div>
+                </div>
+
+                <!-- Quick Tools -->
+                <div class="monitor-card">
+                    <div class="monitor-header">
+                        <h3><i class="fas fa-bolt"></i> QUICK ACTIONS</h3>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-btn" onclick="runPortScan()">
+                            <i class="fas fa-search"></i> PORT SCAN
+                        </button>
+                        <button class="quick-btn" onclick="checkVulnerability()">
+                            <i class="fas fa-bug"></i> VULN SCAN
+                        </button>
+                        <button class="quick-btn" onclick="analyzeTraffic()">
+                            <i class="fas fa-chart-network"></i> TRAFFIC ANALYZE
+                        </button>
+                        <button class="quick-btn" onclick="checkFirewall()">
+                            <i class="fas fa-fire"></i> FIREWALL TEST
+                        </button>
+                        <button class="quick-btn" onclick="encryptData()">
+                            <i class="fas fa-lock"></i> ENCRYPT
+                        </button>
+                        <button class="quick-btn" onclick="decryptData()">
+                            <i class="fas fa-unlock"></i> DECRYPT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Threat Intelligence Section -->
+        <section id="threat-intel" class="terminal-section">
+            <div class="terminal-header">
+                <div class="terminal-title">
+                    <i class="fas fa-radar"></i>
+                    <h1>THREAT INTELLIGENCE PLATFORM</h1>
+                </div>
+            </div>
+            
+            <div class="intel-grid">
+                <div class="intel-card">
+                    <h3><i class="fas fa-database"></i> CVE DATABASE</h3>
+                    <div class="intel-search">
+                        <input type="text" id="cveSearch" placeholder="Search CVE (e.g., CVE-2023-XXXX)" class="search-input">
+                        <button onclick="searchCVE()" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="cve-results" id="cveResults">
+                        <!-- CVE results will populate here -->
+                    </div>
+                </div>
+                
+                <div class="intel-card">
+                    <h3><i class="fas fa-user-secret"></i> DARK WEB MONITOR</h3>
+                    <div class="darkweb-feed" id="darkwebFeed">
+                        <!-- Simulated dark web alerts -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Tools Section -->
+        <section id="tools" class="terminal-section">
+            <div class="terminal-header">
+                <div class="terminal-title">
+                    <i class="fas fa-tools"></i>
+                    <h1>ADVANCED SECURITY TOOLKIT</h1>
+                </div>
+            </div>
+            
+            <div class="tools-grid">
+                <!-- Password Analyzer -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3><i class="fas fa-key"></i> PASSWORD ANALYZER</h3>
+                        <span class="tool-tag offensive">OFFENSIVE</span>
+                    </div>
+                    <input type="password" id="passwordInput" class="tool-input" placeholder="Enter password to analyze...">
+                    <div class="password-strength">
+                        <div class="strength-bar" id="strengthBar"></div>
+                        <div class="strength-label" id="strengthLabel">VERY WEAK</div>
+                    </div>
+                    <div class="password-metrics">
+                        <div class="metric">
+                            <span>Length:</span>
+                            <span id="lengthScore">0</span>
+                        </div>
+                        <div class="metric">
+                            <span>Complexity:</span>
+                            <span id="complexityScore">0</span>
+                        </div>
+                        <div class="metric">
+                            <span>Entropy:</span>
+                            <span id="entropyScore">0 bits</span>
+                        </div>
+                    </div>
+                    <button onclick="analyzePasswordAdvanced()" class="tool-btn">
+                        <i class="fas fa-search"></i> ANALYZE PASSWORD
+                    </button>
+                    <button onclick="generateStrongPassword()" class="tool-btn secondary">
+                        <i class="fas fa-random"></i> GENERATE STRONG
+                    </button>
+                </div>
+                
+                <!-- Hash Cracker -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3><i class="fas fa-hashtag"></i> HASH ANALYZER</h3>
+                        <span class="tool-tag offensive">OFFENSIVE</span>
+                    </div>
+                    <select id="hashType" class="tool-select">
+                        <option value="md5">MD5</option>
+                        <option value="sha1">SHA-1</option>
+                        <option value="sha256">SHA-256</option>
+                        <option value="sha512">SHA-512</option>
+                        <option value="ntlm">NTLM</option>
+                        <option value="bcrypt">bcrypt</option>
+                    </select>
+                    <input type="text" id="hashInput" class="tool-input" placeholder="Enter hash to analyze...">
+                    <div class="hash-info" id="hashInfo">
+                        Hash type: Unknown<br>
+                        Length: 0 characters
+                    </div>
+                    <button onclick="analyzeHash()" class="tool-btn">
+                        <i class="fas fa-search"></i> ANALYZE HASH
+                    </button>
+                    <button onclick="crackHash()" class="tool-btn warning">
+                        <i class="fas fa-unlock-alt"></i> CRACK HASH
+                    </button>
+                </div>
+                
+                <!-- Network Scanner -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3><i class="fas fa-network-wired"></i> NETWORK SCANNER</h3>
+                        <span class="tool-tag reconnaissance">RECON</span>
+                    </div>
+                    <input type="text" id="scanTarget" class="tool-input" value="scanme.nmap.org" placeholder="Target host or IP">
+                    <div class="scan-options">
+                        <label><input type="checkbox" id="scanPing" checked> Ping Scan</label>
+                        <label><input type="checkbox" id="scanPorts" checked> Port Scan</label>
+                        <label><input type="checkbox" id="scanOS"> OS Detection</label>
+                    </div>
+                    <div class="port-range">
+                        <input type="number" id="portStart" value="1" min="1" max="65535">
+                        <span>to</span>
+                        <input type="number" id="portEnd" value="1000" min="1" max="65535">
+                    </div>
+                    <div class="scan-results" id="scanResults">
+                        Ready to scan...
+                    </div>
+                    <button onclick="startAdvancedScan()" class="tool-btn">
+                        <i class="fas fa-play"></i> START SCAN
+                    </button>
+                </div>
+                
+                <!-- Encryption Tool -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3><i class="fas fa-lock"></i> CRYPTO TOOL</h3>
+                        <span class="tool-tag defensive">DEFENSIVE</span>
+                    </div>
+                    <select id="cryptoAlgorithm" class="tool-select">
+                        <option value="aes">AES-256</option>
+                        <option value="rsa">RSA</option>
+                        <option value="blowfish">Blowfish</option>
+                        <option value="xor">XOR Cipher</option>
+                    </select>
+                    <textarea id="cryptoInput" class="tool-textarea" placeholder="Enter text to encrypt/decrypt..."></textarea>
+                    <input type="text" id="cryptoKey" class="tool-input" placeholder="Encryption key">
+                    <div class="crypto-btns">
+                        <button onclick="encryptText()" class="tool-btn">
+                            <i class="fas fa-lock"></i> ENCRYPT
+                        </button>
+                        <button onclick="decryptText()" class="tool-btn">
+                            <i class="fas fa-unlock"></i> DECRYPT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="cyber-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-glitch" data-text="MATRIX">MATRIX</span>
+                    <span class="logo-vogue">VOGUE</span>
+                    <sup class="logo-cloud">CLOUD</sup>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/elmatrix000" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://tryhackme.com" target="_blank"><i class="fas fa-flag"></i></a>
+                    <a href="https://hackthebox.com" target="_blank"><i class="fas fa-cube"></i></a>
+                </div>
+                <div class="footer-legal">
+                    <p>© 2024 ELMATRIX000 SECURITY OPERATIONS | <span id="currentYear"></span></p>
+                    <p class="disclaimer">This site is for educational purposes only. All tools run client-side in your browser.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Terminal Input -->
+    <div class="terminal-input">
+        <div class="input-prompt">
+            <span class="prompt-user">elmatrix000@matrixvogue</span>
+            <span class="prompt-symbol">:~$</span>
+        </div>
+        <input type="text" id="terminalCommand" class="command-input" 
+               placeholder="Type 'help' for commands..." autocomplete="off"
+               onkeydown="handleTerminalCommand(event)">
+        <div class="command-history" id="commandHistory"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
