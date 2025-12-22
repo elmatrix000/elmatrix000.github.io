@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
+    font-family: 'Georgia', serif;
+    color: #e6d5b8;
+}
+
+main {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1200px;
+}
+
+#game-container {
+    border: 3px solid #8b7355;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(139, 115, 85, 0.4);
+}
+
+#codex-ui {
+    background: rgba(30, 25, 20, 0.9);
+    border: 2px solid #8b7355;
+    border-radius: 10px;
+    padding: 25px;
+    width: 300px;
+    min-height: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#codex-ui h3 {
+    margin-top: 0;
+    color: #d4af37;
+    border-bottom: 1px solid #8b7355;
+    padding-bottom: 10px;
+}
+
+#wisdom-text {
+    background: rgba(20, 18, 15, 0.7);
+    padding: 15px;
+    border-radius: 5px;
+    min-height: 100px;
+    font-style: italic;
+    border-left: 4px solid #d4af37;
+}
+
+#inscribe-btn {
+    background: linear-gradient(to bottom, #8b7355, #5d4c3a);
+    color: #f5f1e8;
+    border: none;
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Georgia', serif;
+    transition: all 0.2s;
+}
+
+#inscribe-btn:hover:not(:disabled) {
+    background: linear-gradient(to bottom, #a88c6c, #6d5945);
+    box-shadow: 0 0 10px #d4af37;
+}
+
+#inscribe-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
