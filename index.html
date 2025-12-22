@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="matrix">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>// SYSTEM BOOT: gothalienboy_protocol v0.7.3</title>
+    
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Major+Mono+Display&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon (Cube) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='20' y='20' width='60' height='60' fill='none' stroke='%2300ff41' stroke-width='3'/><rect x='25' y='25' width='50' height='50' fill='none' stroke='%230080ff' stroke-width='2' opacity='0.7'/></svg>">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="gothalienboy and the black cube">
+    <meta property="og:description" content="A consciousness-hacking browser game. How deep does the simulation go?">
+    <meta property="og:image" content="assets/images/social-preview.png">
+    <meta property="og:url" content="https://elmatrix000.github.io">
+    
+    <!-- iOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Android PWA -->
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Matrix Background -->
+    <canvas id="matrixCanvas"></canvas>
+    
+    <!-- Cube Particles Background -->
+    <div id="cubeParticles"></div>
+    
+    <!-- Main Desktop -->
+    <div class="desktop" id="desktop">
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span class="sys-indicator">
+                    <i class="fas fa-server"></i>
+                    <span class="pulse"></span>
+                    SYSTEM: <span id="sysStatus" class="glitch-text">INITIALIZING</span>
+                </span>
+                <span class="time-display" id="liveClock">--:--:--</span>
+                <span class="date-display" id="liveDate">--- --- --</span>
+            </div>
+            
+            <div class="status-center">
+                <span class="mission-status" id="missionStatus">
+                    <i class="fas fa-broadcast-tower"></i>
+                    SIGNAL STRENGTH: <span id="signalStrength">7%</span>
+                </span>
+            </div>
+            
+            <div class="status-right">
+                <span class="resonance-display">
+                    <i class="fas fa-wave-square"></i>
+                    RESONANCE: <span id="resLevel">0.3%</span>
+                </span>
+                <span class="cube-proximity">
+                    <i class="fas fa-cube"></i>
+                    CUBE PROXIMITY: <span id="cubeProximity">∞</span>
+                </span>
+                <span class="encryption-status">
+                    <i class="fas fa-lock"></i>
+                    <span class="encryption-text">QUANTUM ENCRYPTED</span>
+                </span>
+            </div>
+        </div>
+        
+        <!-- Desktop Icons (Apps) -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" data-app="terminal" draggable="true">
+                <div class="icon-img"><i class="fas fa-terminal"></i></div>
+                <div class="icon-label">TERMINAL</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="freqScanner" draggable="true">
+                <div class="icon-img"><i class="fas fa-wave-square"></i></div>
+                <div class="icon-label">FREQ SCANNER</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="dreamLog" draggable="true">
+                <div class="icon-img"><i class="fas fa-moon"></i></div>
+                <div class="icon-label">DREAM LOG</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="socialGraph" draggable="true">
+                <div class="icon-img"><i class="fas fa-project-diagram"></i></div>
+                <div class="icon-label">SOCIAL GRAPH</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="cubeInterface" draggable="true">
+                <div class="icon-img"><i class="fas fa-cube"></i></div>
+                <div class="icon-label">CUBE INTERFACE</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="loreDatabase" draggable="true">
+                <div class="icon-img"><i class="fas fa-database"></i></div>
+                <div class="icon-label">LORE DATABASE</div>
+            </div>
+        </div>
+        
+        <!-- Window Container -->
+        <div class="window-container" id="windowContainer">
+            <!-- Windows will be dynamically created here -->
+        </div>
+        
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="taskbar-start">
+                <button class="start-btn" id="startBtn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <span class="game-title">GOTHALIENBOY_PROTOCOL</span>
+            </div>
+            
+            <div class="taskbar-apps" id="taskbarApps">
+                <!-- Running app icons appear here -->
+            </div>
+            
+            <div class="taskbar-tools">
+                <button class="tb-tool" id="perceptionFilterBtn" title="Perception Filters">
+                    <i class="fas fa-eye"></i>
+                </button>
+                <button class="tb-tool" id="audioDecoderBtn" title="Audio Analysis">
+                    <i class="fas fa-headphones"></i>
+                </button>
+                <button class="tb-tool" id="glyphTranslatorBtn" title="Glyph Translator">
+                    <i class="fas fa-language"></i>
+                </button>
+                <button class="tb-tool" id="chakraMonitorBtn" title="Chakra Alignment">
+                    <i class="fas fa-spa"></i>
+                </button>
+            </div>
+            
+            <div class="taskbar-system">
+                <div class="system-tray">
+                    <span class="tray-item" id="activeConnections">
+                        <i class="fas fa-wifi"></i> 3
+                    </span>
+                    <span class="tray-item" id="dataStreams">
+                        <i class="fas fa-stream"></i> 14
+                    </span>
+                    <span class="tray-item" id="firewallStatus">
+                        <i class="fas fa-shield-alt"></i>
+                    </span>
+                </div>
+                <div class="system-time" id="systemTime">
+                    <div class="time">--:--</div>
+                    <div class="date">--- --</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Start Menu (Hidden) -->
+        <div class="start-menu" id="startMenu">
+            <div class="start-header">
+                <div class="start-user">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">GOTH [ALIENBOY_PROTOCOL]</div>
+                        <div class="user-status">CONSCIOUSNESS: HYBRID</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="start-apps">
+                <div class="start-app" data-app="terminal">
+                    <i class="fas fa-terminal"></i>
+                    <span>Terminal</span>
+                </div>
+                <div class="start-app" data-app="freqScanner">
+                    <i class="fas fa-wave-square"></i>
+                    <span>Frequency Scanner</span>
+                </div>
+                <!-- More apps... -->
+            </div>
+            
+            <div class="start-footer">
+                <div class="start-power">
+                    <button class="power-btn" id="powerBtn">
+                        <i class="fas fa-power-off"></i>
+                        <span>SHUTDOWN</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notification Center -->
+        <div class="notification-center" id="notificationCenter">
+            <div class="notif-header">
+                <h3><i class="fas fa-bell"></i> NOTIFICATIONS</h3>
+                <button class="notif-clear">CLEAR ALL</button>
+            </div>
+            <div class="notif-list" id="notifList">
+                <!-- Notifications appear here -->
+            </div>
+        </div>
+        
+        <!-- Initial Boot Screen -->
+        <div class="boot-screen" id="bootScreen">
+            <div class="boot-content">
+                <div class="boot-logo">
+                    <div class="cube-logo">
+                        <div class="cube-face front"></div>
+                        <div class="cube-face back"></div>
+                        <div class="cube-face right"></div>
+                        <div class="cube-face left"></div>
+                        <div class="cube-face top"></div>
+                        <div class="cube-face bottom"></div>
+                    </div>
+                    <div class="boot-title">
+                        <span class="title-glow">GOTHALIENBOY</span>
+                        <span class="title-sub">AND THE BLACK CUBE</span>
+                    </div>
+                </div>
+                
+                <div class="boot-sequence">
+                    <div class="boot-line" id="bootLine1">
+                        <span class="boot-prefix">[SYSTEM]</span>
+                        Initializing consciousness interface...
+                        <span class="boot-status success">DONE</span>
+                    </div>
+                    <div class="boot-line" id="bootLine2">
+                        <span class="boot-prefix">[NEURAL]</span>
+                        Syncing bio-rhythms...
+                        <span class="boot-status">PENDING</span>
+                    </div>
+                    <!-- More boot lines... -->
+                </div>
+                
+                <div class="boot-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="bootProgress"></div>
+                    </div>
+                    <div class="progress-text" id="bootProgressText">0%</div>
+                </div>
+                
+                <div class="boot-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    WARNING: This experience may alter your perception of reality.
+                    <br>
+                    Proceed with conscious intent.
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Modal Overlays -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    
+    <!-- Audio Elements -->
+    <audio id="ambientAudio" loop>
+        <source src="assets/audio/ambient/digital-winds.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Core Scripts -->
+    <script src="script.js"></script>
+    <script src="game/engine/core.js"></script>
+    <script src="game/engine/perception-engine.js"></script>
+</body>
+</html>
